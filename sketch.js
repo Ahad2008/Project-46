@@ -1,7 +1,8 @@
-var ground, player, playerimg, playerP, P1, P2;
+var ground, player, playerimg, playerP, P1, P2, coin, coinimg;
 
 function preload(){
 playerimg = loadImage("man.png");
+coinimg = loadImage("coin.png");
 }
 
 function setup(){
@@ -38,6 +39,7 @@ if(keyDown("RIGHT_ARROW")){
 }
 
 platform();
+scoin();
 
 drawSprites();
 }
@@ -48,7 +50,7 @@ if(frameCount % 100 === 0){
     P1.shapeColor = "blue";
     P1.velocityX = -5;
 
-    P2 = createSprite(1100, 350, 150, 20);
+    P2 = createSprite(1200, 350, 150, 20);
     P2.shapeColor = "orange";
     P2.velocityX = -5;
 
@@ -63,3 +65,20 @@ if(frameCount % 100 === 0){
     }
 }
 }
+
+function scoin(){
+    if(frameCount % 100 === 0){
+        coin = createSprite(1200, 150, 50, 50);
+        coin.addImage("gold", coinimg);
+        coin.scale = 0.1;
+        coin.velocityX = -5;
+    
+        var rand = Math.round(random(1,2));
+        if(rand === 1){
+            coin.y = 110;
+        }
+        else if (rand === 2){
+            coin.y = 310;
+        }
+    }
+    }
